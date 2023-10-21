@@ -11,13 +11,13 @@ KERNEL_DIR="$(pwd)"
 ##----------------------------------------------------------##
 # Device Name and Model
 MODEL=Xiaomi
-DEVICE=Miatoll
+DEVICE=Sweet
 
 # Kernel Version Code
 VERSION=1.0
 
 # Kernel Defconfig
-DEFCONFIG=nethunter_defconfig
+DEFCONFIG=sweet_nethunter_defconfig
 
 # Select LTO variant ( Full LTO by default )
 DISABLE_LTO=0
@@ -47,7 +47,7 @@ FINAL_ZIP=${ZIPNAME}-kernel-${DEVICE}-${TANGGAL}.zip
 ##----------------------------------------------------------##
 # Specify compiler.
 
-COMPILER=azure
+COMPILER=neutron
 
 ##----------------------------------------------------------##
 # Specify Linker
@@ -170,17 +170,17 @@ function push() {
 function configs() {
     if [ -d ${KERNEL_DIR}/clang ] || [ -d ${KERNEL_DIR}/aosp-clang  ]; then
        if [ $DISABLE_LTO = "1" ]; then
-          sed -i 's/CONFIG_LTO_CLANG=y/# CONFIG_LTO_CLANG is not set/' arch/arm64/configs/nethunter_defconfig
-          sed -i 's/CONFIG_LTO=y/# CONFIG_LTO is not set/' arch/arm64/configs/nethunter_defconfig
-          sed -i 's/# CONFIG_LTO_NONE is not set/CONFIG_LTO_NONE=y/' arch/arm64/configs/nethunter_defconfig
+          sed -i 's/CONFIG_LTO_CLANG=y/# CONFIG_LTO_CLANG is not set/' arch/arm64/configs/sweet_nethunter_defconfig
+          sed -i 's/CONFIG_LTO=y/# CONFIG_LTO is not set/' arch/arm64/configs/sweet_nethunter_defconfig
+          sed -i 's/# CONFIG_LTO_NONE is not set/CONFIG_LTO_NONE=y/' arch/arm64/configs/sweet_nethunter_defconfig
        elif [ $THIN_LTO = "1" ]; then
-          sed -i 's/# CONFIG_THINLTO is not set/CONFIG_THINLTO=y/' arch/arm64/configs/nethunter_defconfig
+          sed -i 's/# CONFIG_THINLTO is not set/CONFIG_THINLTO=y/' arch/arm64/configs/sweet_nethunter_defconfig
        fi
     elif [ -d ${KERNEL_DIR}/gcc64 ]; then
-       sed -i 's/CONFIG_LLVM_POLLY=y/# CONFIG_LLVM_POLLY is not set/' arch/arm64/configs/nethunter_defconfig
-       sed -i 's/# CONFIG_GCC_GRAPHITE is not set/CONFIG_GCC_GRAPHITE=y/' arch/arm64/configs/nethunter_defconfig
+       sed -i 's/CONFIG_LLVM_POLLY=y/# CONFIG_LLVM_POLLY is not set/' arch/arm64/configs/sweet_nethunter_defconfig
+       sed -i 's/# CONFIG_GCC_GRAPHITE is not set/CONFIG_GCC_GRAPHITE=y/' arch/arm64/configs/sweet_nethunter_defconfig
        if ! [ $DISABLE_LTO = "1" ]; then
-          sed -i 's/# CONFIG_LTO_GCC is not set/CONFIG_LTO_GCC=y/' arch/arm64/configs/nethunter_defconfig
+          sed -i 's/# CONFIG_LTO_GCC is not set/CONFIG_LTO_GCC=y/' arch/arm64/configs/sweet_nethunter_defconfig
        fi
     fi
 }
