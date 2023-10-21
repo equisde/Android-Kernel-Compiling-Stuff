@@ -24,7 +24,7 @@ echo -e " "
 # cmdline options
 clean=false
 regen=false
-do_not_send_to_tg=false
+do_not_send_to_tg=true
 help=false
 miui=false
 
@@ -64,7 +64,7 @@ make kernelversion \
     | grep -v make > linuxver & wait $!
 KERN_VER="$(head -n 1 linuxver)"
 BUILD_DATE=$(date '+%Y-%m-%d  %H:%M')
-DEVICE=""                                                                   # Add Device Name
+DEVICE="sweet"                                                                   # Add Device Name
 VERSION="1.0"
 KERNELNAME="ViP3R-$TYPE"
 if $miui; then
@@ -72,7 +72,7 @@ ZIPNAME="ViP3R-KERNEL-$VERSION-$(date '+%Y%m%d%H%M')-$TYPE.zip"
 else
 ZIPNAME="ViP3R-KERNEL-$VERSION-$(date '+%Y%m%d%H%M')-$TYPE.zip"
 fi
-TC_DIR="/home/cod3x/Android/Kernels/ToolChains/proton-clang"
+TC_DIR="/root/Android/Kernels/ToolChains/proton-clang"
 DEFCONFIG="_defconfig"                                                      # Add Defconfig
 
 
