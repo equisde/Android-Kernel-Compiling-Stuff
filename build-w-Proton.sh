@@ -2,11 +2,11 @@
 
 SECONDS=0 # builtin bash timer
 ZIPNAME="ViP3R-v1.0_$(TZ=Asia/India date +"%Y%m%d-%H%M").zip"
-TC_DIR="/home/cod3x/Android/Kernels/ToolChains/proton-clang"
-GCC_64_DIR="/home/cod3x/Android/Kernels/ToolChains/aarch64-linux-android-4.9"
-GCC_32_DIR="/home/cod3x/Android/Kernels/ToolChains/arm-linux-androideabi-4.9"
-AK3_DIR="/home/cod3x/Android/Kernels/Anykernel3"
-DEFCONFIG="nethunter_defconfig"
+TC_DIR="/root/Android/Kernel/ToolChains/proton-clang"
+GCC_64_DIR="/root/Android/Kernel/ToolChains/aarch64-linux-android-4.9"
+GCC_32_DIR="/root/Android/Kernel/ToolChains/arm-linux-androideabi-4.9"
+AK3_DIR="/root/Android/Kernel/Anykernel3"
+DEFCONFIG="sweet_nethunter_defconfig"
 
 export PATH="$TC_DIR/bin:$PATH"
 export KBUILD_BUILD_USER="COD3X"
