@@ -67,11 +67,11 @@ VERSION="1.0"
 #MODEL="OnePlus Nord"
 
 # The codename of the device
-DEVICE="olive"
+DEVICE="sweet"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=cod3x_nethunter_defconfig
+DEFCONFIG=sweet_nethunter_defconfig
 
 # Specify compiler.
 # 'clang' or 'gcc'
@@ -92,7 +92,7 @@ BUILD_DTBO=1
 SILENCE=0
 
 # The name of the Kernel, to name the ZIP
-ZIPNAME="ViP3R-BY-COD3X-$VERSION"
+ZIPNAME="ViP3R-BY-PARALLAX-$VERSION"
 
 # Set Date and Time Zone
 DATE=$(TZ=Asia/Kolkata date +"%Y%m%d-%T")
@@ -106,25 +106,25 @@ DATE=$(TZ=Asia/Kolkata date +"%Y%m%d-%T")
 	if [ $COMPILER = "clang" ]
 	then
 		msg "|| Cloning Clang ||"
-		git clone --depth=1 https://github.com/sohamxda7/llvm-stable.git -b aosp-13.0.3 /home/cod3x/Android/Kernels/ToolChains/clang-llvm
-        git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 /home/cod3x/Android/Kernels/ToolChains/gcc
-        git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 /home/cod3x/Android/Kernels/ToolChains/gcc32
+		git clone --depth=1 https://github.com/sohamxda7/llvm-stable.git -b aosp-13.0.3 /root/Android/Kernels/ToolChains/clang-llvm
+        git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 /root/Android/Kernels/ToolChains/gcc
+        git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 /root/Android/Kernels/ToolChains/gcc32
 
 		# Toolchain Directory defaults to clang-llvm
-		TC_DIR=/home/cod3x/Android/Kernels/ToolChains/clang-llvm
-		GC_DIR=/home/cod3x/Android/Kernels/ToolChains/gcc
-		GC2_DIR=/home/cod3x/Android/Kernels/ToolChains/gcc32
+		TC_DIR=/root/Android/Kernels/ToolChains/clang-llvm
+		GC_DIR=/root/Android/Kernels/ToolChains/gcc
+		GC2_DIR=/root/Android/Kernels/ToolChains/gcc32
 	elif [ $COMPILER = "gcc" ]
 	then
 		msg "|| Cloning GCC 9.3.0 baremetal ||"
 		git clone --depth=1 https://github.com/arter97/arm64-gcc.git gcc64
 		git clone --depth=1 https://github.com/arter97/arm32-gcc.git gcc32
-		GCC64_DIR=$KERNEL_DIR/home/cod3x/Android/Kernels/ToolChains/gcc
-		GCC32_DIR=$KERNEL_DIR/home/cod3x/Android/Kernels/ToolChains/gcc32
+		GCC64_DIR=$KERNEL_DIR/root/Android/Kernels/ToolChains/gcc
+		GCC32_DIR=$KERNEL_DIR/root/Android/Kernels/ToolChains/gcc32
 	fi
 
 	msg "|| Cloning libufdt ||"
-	git clone https://android.googlesource.com/platform/system/libufdt /home/cod3x/Android/Kernels/ToolChains/scripts/ufdt/libufdt
+	git clone https://android.googlesource.com/platform/system/libufdt /root/Android/Kernels/ToolChains/scripts/ufdt/libufdt
 	
 	msg "|| Cloning Anykernel3 ||"
 	git clone https://github.com/IamCOD3X/AnyKernel3.git AnyKernel3
@@ -219,7 +219,7 @@ build_kernel() {
 	    	if [ $BUILD_DTBO = 1 ]
 			then
 				msg "|| Building DTBO ||"
-				python2 "/home/cod3x/Android/Kernel/ToolChains/scripts/ufdt/libufdt/utils/src/mkdtboimg.py" \
+				python2 "/root/Android/Kernel/ToolChains/scripts/ufdt/libufdt/utils/src/mkdtboimg.py" \
 				create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/vendor/qcom/avicii-overlay.dtbo"
 			fi
 				gen_zip
