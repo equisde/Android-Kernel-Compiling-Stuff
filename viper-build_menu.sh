@@ -73,7 +73,7 @@ else
 ZIPNAME="ViP3R-KERNEL-$VERSION-$(date '+%Y%m%d%H%M')-$TYPE.zip"
 fi
 TC_DIR="/root/Android/Kernels/ToolChains/proton-clang"
-DEFCONFIG="_defconfig"                                                      # Add Defconfig
+DEFCONFIG="sweet_nethunter_defconfig"                                                      # Add Defconfig
 
 
 export PATH="$TC_DIR/bin:$PATH"
